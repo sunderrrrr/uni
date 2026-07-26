@@ -974,50 +974,52 @@ header.scrolled {
 }
 
 /* ==========================================
-   ПРИ ПОДДЕРЖКЕ (компактная плашка)
+   ПРИ ПОДДЕРЖКЕ — дрейфующее поле точек
+   вокруг лого RST (лого само состоит из точек,
+   мы продолжаем этот приём в композиции)
    ========================================== */
-.supported-by {
-  padding: 56px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+.supported-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
 }
-.supported-inner {
+@media (max-width: 860px) {
+  .supported-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.supported-copy .eyebrow {
+  margin-bottom: 18px;
+}
+.supported-copy h2 {
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.12;
+  margin-bottom: 18px;
+}
+.supported-copy p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+.supported-mark {
+  position: relative;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  text-align: left;
 }
 .supported-logo {
-  height: 100px;
-  width: auto;
-  flex-shrink: 0;
-}
-.supported-text {
-  max-width: 500px;
-}
-.supported-text .eyebrow {
-  margin-bottom: 6px;
-}
-.supported-text p {
-  margin: 0;
-  font-size: 15px;
-  color: var(--ink-soft);
-  line-height: 1.5;
-}
-.supported-text .note {
-  margin-top: 6px;
-  font-size: 18px;
-}
-@media (max-width: 620px) {
-  .supported-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-  .supported-text {
-    max-width: none;
-  }
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
 }
 
 /* ==========================================
