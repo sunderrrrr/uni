@@ -974,6 +974,53 @@ header.scrolled {
 }
 
 /* ==========================================
+   ПРИ ПОДДЕРЖКЕ (компактная плашка)
+   ========================================== */
+.supported-by {
+  padding: 56px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.supported-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+.supported-logo {
+  height: 100px;
+  width: auto;
+  flex-shrink: 0;
+}
+.supported-text {
+  max-width: 500px;
+}
+.supported-text .eyebrow {
+  margin-bottom: 6px;
+}
+.supported-text p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.supported-text .note {
+  margin-top: 6px;
+  font-size: 18px;
+}
+@media (max-width: 620px) {
+  .supported-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .supported-text {
+    max-width: none;
+  }
+}
+
+/* ==========================================
    FAQ
    ========================================== */
 .faq-wrap {
