@@ -30,8 +30,9 @@
   --flow-scale: 3.5;
   --flow-width: 920px;
   --flow-padding-right: 150px;
-  --flow-mobile-scale: 2.5;
+  --flow-mobile-scale: 1.55;
   --flow-mobile-width: 70%;
+  --flow-mobile-line-width: 5;
 }
 
 /* ==========================================
@@ -371,32 +372,27 @@ header.scrolled {
   stroke-opacity: 0.14;
   stroke-width: 1.4;
 }
+/* ==========================================
+   ГРАФ (SVG) — БЕСКОНЕЧНАЯ АНИМАЦИЯ ОТ НАЧАЛА ДО КОНЦА
+   ========================================== */
 .flow-path-active {
   fill: none;
   stroke: var(--accent);
-  stroke-width: 3;
+  stroke-width: 5;
   stroke-linecap: round;
-  stroke-dasharray: 12 720;
-  animation: flow-draw 7s var(--ease) infinite;
+  stroke-dasharray: 720;
+  stroke-dashoffset: 720;
+  animation: flow-draw 6s linear infinite;
 }
+
 @keyframes flow-draw {
   0% {
     stroke-dashoffset: 720;
-    opacity: 0;
-  }
-  6% {
     opacity: 1;
-  }
-  55% {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-  75% {
-    opacity: 0;
   }
   100% {
-    stroke-dashoffset: -60;
-    opacity: 0;
+    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 .flow-node {
@@ -921,6 +917,13 @@ header.scrolled {
   object-fit: cover;
   display: block;
 }
+.team-photo img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+.team-photo:hover img {
+  filter: grayscale(0%);
+}
 .team-photo::after {
   content: "";
   position: absolute;
@@ -1094,31 +1097,37 @@ footer {
 .footer-links a:hover {
   color: var(--dark-ink);
 }
-
 /* ==========================================
-   ГРАФ В ГЕРОЕ — МАСШТАБИРОВАНИЕ
+   ГРАФ В ГЕРОЕ — ЦЕНТРИРОВАНИЕ, БЕЗ ОТСТУПОВ
    ========================================== */
 .flow-visual {
   max-width: var(--flow-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: visible;
-  padding-right: var(--flow-padding-right);
 }
+
 .flow-visual svg {
   transform: scale(var(--flow-scale));
-  transform-origin: top left;
+  transform-origin: center center;
   width: 50%;
   height: auto;
   display: block;
+  flex-shrink: 0;
 }
 
+/* На мобилках */
 @media (max-width: 768px) {
   .flow-visual {
     max-width: 100%;
-    overflow: hidden;
-    padding-right: 0;
+    padding: 0;
+    overflow: visible;
   }
   .flow-visual svg {
     transform: scale(var(--flow-mobile-scale));
+    transform-origin: center center;
     width: var(--flow-mobile-width);
   }
 }
