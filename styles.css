@@ -1290,3 +1290,585 @@ footer {
     width: var(--flow-mobile-width);
   }
 }
+
+/* ==========================================
+   ОТЗЫВЫ — СЛАЙДЕР
+   ========================================== */
+.reviews-slider {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 48px; /* место для стрелок */
+}
+
+.reviews-track-wrap {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.reviews-track {
+  display: flex;
+  transition: transform 0.6s var(--ease);
+  will-change: transform;
+}
+
+.review-slide {
+  flex: 0 0 100%;
+  min-height: 200px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.review-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px 34px 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s var(--ease);
+}
+
+.review-card:hover {
+  box-shadow: 0 12px 40px -16px rgba(23, 23, 23, 0.08);
+}
+
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.review-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(150deg, #edeae3, #e2e7e2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.review-meta {
+  display: flex;
+  flex-direction: column;
+}
+.review-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.review-role {
+  font-size: 13.5px;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+.review-text {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+  padding-left: 20px;
+  border-left: 3px solid var(--accent);
+  flex-grow: 1;
+}
+
+/* Кнопки навигации */
+.reviews-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+  color: var(--ink-soft);
+  box-shadow: 0 4px 12px rgba(23, 23, 23, 0.06);
+}
+.reviews-btn:hover {
+  background: var(--bg);
+  box-shadow: 0 8px 24px rgba(23, 23, 23, 0.1);
+  color: var(--ink);
+}
+.reviews-btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.reviews-btn--prev {
+  left: 0;
+}
+.reviews-btn--next {
+  right: 0;
+}
+
+/* Индикаторы (точки) */
+.reviews-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.reviews-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    background 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+.reviews-dot:hover {
+  background: var(--ink-faint);
+}
+.reviews-dot.is-active {
+  background: var(--accent);
+  transform: scale(1.25);
+}
+.reviews-dot:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Адаптив */
+@media (max-width: 720px) {
+  .reviews-slider {
+    padding: 0 32px;
+  }
+  .review-card {
+    padding: 24px 20px;
+  }
+  .review-avatar {
+    width: 44px;
+    height: 44px;
+    font-size: 15px;
+  }
+  .review-name {
+    font-size: 15px;
+  }
+  .review-text {
+    font-size: 14px;
+    padding-left: 16px;
+  }
+  .reviews-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .reviews-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-slider {
+    padding: 0 4px;
+  }
+  .reviews-btn {
+    display: none; /* на очень маленьких экранах прячем стрелки, оставляем свайп и точки */
+  }
+  .review-card {
+    padding: 20px 16px;
+  }
+}
+
+/* ==========================================
+   ПРОДУКТЫ / ТАРИФЫ (Форматы работы)
+   ========================================== */
+.products {
+  padding: 120px 0;
+  background: var(--bg);
+}
+
+.products-head {
+  max-width: 700px;
+  margin-bottom: 64px;
+}
+
+.products-sub {
+  font-size: 17px;
+  color: var(--ink-soft);
+  margin-top: 12px;
+  line-height: 1.6;
+  max-width: 54ch;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 36px 30px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+  height: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px -20px rgba(23, 23, 23, 0.15);
+}
+
+/* Бесплатная карточка — особый акцент */
+.product-card--free {
+  border-color: rgba(216, 255, 69, 0.5);
+  background: linear-gradient(
+    180deg,
+    var(--bg-card) 0%,
+    rgba(216, 255, 69, 0.04) 100%
+  );
+}
+
+/* Карточка сопровождения с акцентом */
+.product-card--featured {
+  border-color: var(--accent);
+  background: linear-gradient(
+    180deg,
+    var(--bg-card) 0%,
+    rgba(216, 255, 69, 0.04) 100%
+  );
+}
+
+.product-step {
+  font-family: "Unbounded", sans-serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--ink-faint);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+}
+
+.product-icon {
+  margin-bottom: 12px;
+  color: var(--ink-faint);
+  opacity: 0.5;
+}
+
+.product-title {
+  font-family: "Unbounded", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.product-desc {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.product-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+  min-height: 120px;
+}
+
+.product-benefit {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+}
+
+.product-benefit::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.product-benefit:last-child {
+  margin-bottom: 0;
+}
+
+.product-benefit-accent {
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: 0 6px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.product-price {
+  font-family: "Unbounded", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: auto;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.product-price span {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-faint);
+}
+
+/* Бесплатно — с зелёным подчёркиванием как в .mark */
+.product-price--free {
+  font-family: "Unbounded", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  position: relative;
+  display: inline-block;
+  width: auto;
+  margin-bottom: 18px;
+}
+
+.product-price--free::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -3px;
+  bottom: 2px;
+  height: 0.4em;
+  background: var(--accent);
+  z-index: -1;
+  transform: rotate(-0.6deg);
+  border-radius: 3px 6px 4px 7px / 5px 3px 6px 4px;
+  opacity: 0.85;
+}
+
+.product-cta {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  padding: 14px 20px;
+}
+
+/* Дополнительные модули (аддоны) */
+.products-addons {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.products-addons-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.products-addons-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.products-addon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  padding: 8px 16px 8px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.products-addon-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.products-addon-name {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.products-addon-price {
+  font-weight: 600;
+  color: var(--ink-faint);
+  font-size: 13px;
+}
+
+.products-addons-badge {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-top: 16px;
+}
+
+/* Блок доверия */
+.products-trust {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.products-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  max-width: 260px;
+}
+
+.products-trust-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .product-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .products {
+    padding: 76px 0;
+  }
+  .products-head {
+    margin-bottom: 40px;
+  }
+  .products-sub {
+    font-size: 15px;
+  }
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .product-card:last-child {
+    max-width: 100%;
+    margin: 0;
+  }
+  .product-card {
+    padding: 28px 22px 24px;
+  }
+  .product-step {
+    font-size: 32px;
+  }
+  .product-title {
+    font-size: 19px;
+  }
+  .product-price,
+  .product-price--free {
+    font-size: 24px;
+  }
+  .products-addons-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .products-trust {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .products-trust-item {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-card {
+    padding: 20px 16px 20px;
+  }
+  .product-title {
+    font-size: 17px;
+  }
+  .product-price,
+  .product-price--free {
+    font-size: 20px;
+  }
+  .product-benefit {
+    font-size: 12.5px;
+  }
+  .product-desc {
+    font-size: 13px;
+  }
+}
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}

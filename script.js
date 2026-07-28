@@ -54,7 +54,7 @@ document.querySelectorAll(".faq-item").forEach((item) => {
 // ==============================================
 const teamData = [
   {
-    name: "Илья К.",
+    name: "Илья Коротаев",
     university: "МИЭМ НИУ ВШЭ",
     major: "Информационная безопасность",
     description:
@@ -63,7 +63,7 @@ const teamData = [
     photo: "images/iliya.jpg",
   },
   {
-    name: "Ариана С.",
+    name: "Ариана Седики",
     university: "МСХА имени К.А. Тимирязева",
     major: "Клеточная и молекулярная биотехнология",
     description:
@@ -72,11 +72,11 @@ const teamData = [
     photo: "images/ariana.jpg",
   },
   {
-    name: "Ярослав Б.",
-    university: "Сириус Университет",
+    name: "Ярослав Баландов",
+    university: "НТУ Сириус Университет",
     major: "Биотехнологии и биоинженерия",
     description:
-      "Ещё в школе выиграл олимпиаду «Сириус» с проектом по исследованию влияния поляризованного света на растения. Это открыло ему дорогу на бюджет без вступительных испытаний. Знает, как подготовить сильный проект и грамотно использовать олимпиадные льготы. Расскажет, как превратить науку в реальное преимущество.",
+      "Ещё в школе выиграл олимпиаду «Большие вызовы» с проектом по исследованию влияния поляризованного света на растения. Это открыло ему дорогу на бюджет без вступительных испытаний. Знает, как подготовить сильный проект и грамотно использовать олимпиадные льготы. Расскажет, как превратить науку в реальное преимущество.",
     initials: "Я Б",
     photo: "images/image.png",
   },
@@ -270,3 +270,201 @@ const statCasesEl = document.getElementById("statCases");
 const statTeamEl = document.getElementById("statTeam");
 if (statCasesEl) statCasesEl.textContent = casesData.length;
 if (statTeamEl) statTeamEl.textContent = teamData.length;
+// ==============================================
+// 7. ОТЗЫВЫ — СЛАЙДЕР
+// ==============================================
+const reviewsData = [
+  {
+    name: "Алексей",
+    role: "Абитуриент, 11 класс",
+    initials: "А",
+    text: "Благодаря УНИФЛОУ я перестал бояться, что никуда не поступлю. Ребята просто сели и разложили всё по полочкам: куда я реально могу пройти, какие предметы сдавать, и главное — у меня появился план. Спасибо, что вы есть!",
+  },
+  {
+    name: "Екатерина",
+    role: "Мама абитуриента",
+    initials: "Е",
+    text: "Мы с мужем были в панике - ребёнок не знает, куда хочет. Психолог из УНИФЛОУ помогла нам выдохнуть и перестать давить. Сын стал спокойнее, а мы перестали ссориться по вечерам. Огромное спасибо!",
+  },
+  {
+    name: "Дмитрий",
+    role: "Студент 1-го курса",
+    initials: "Д",
+    text: "Готовился к поступлению в Вышку, но не был уверен в своих силах. Мне помогли с олимпиадами, подсказали, куда подавать документы в первую очередь. В итоге поступил на бюджет и сейчас учусь на том, что люблю. Рекомендую!",
+  },
+  {
+    name: "Ольга",
+    role: "Родитель",
+    initials: "О",
+    text: "Мой сын всегда был неуверен в выборе профессии. После консультации с психологом и разбора вузов он чётко понял, что хочет идти на IT-специальность. Поступил в Политех в СпБ, счастлив и доволен. Спасибо за вашу поддержку!",
+  },
+  {
+    name: "Иван",
+    role: "Абитуриент 2025",
+    initials: "И",
+    text: "УНИФЛОУ - это не просто консультации, это реальная поддержка. Мне помогли не только с выбором вуза, но и с психологической подготовкой. Я перестал паниковать и уверенно пошёл к своей цели. Огромное спасибо команде!",
+  },
+];
+
+// DOM-элементы
+const track = document.getElementById("reviewsTrack");
+const dotsContainer = document.getElementById("reviewsDots");
+const prevBtn = document.querySelector(".reviews-btn--prev");
+const nextBtn = document.querySelector(".reviews-btn--next");
+let currentIndex = 0;
+let totalSlides = 0;
+let autoplayInterval = null;
+const AUTOPLAY_DELAY = 5000; // 5 секунд
+
+// Строим слайды
+function buildSlides() {
+  track.innerHTML = "";
+  reviewsData.forEach((item) => {
+    const slide = document.createElement("div");
+    slide.className = "review-slide";
+    slide.innerHTML = `
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">${item.initials}</div>
+          <div class="review-meta">
+            <span class="review-name">${item.name}</span>
+            <span class="review-role">${item.role}</span>
+          </div>
+        </div>
+        <p class="review-text">${item.text}</p>
+      </div>
+    `;
+    track.appendChild(slide);
+  });
+  totalSlides = reviewsData.length;
+}
+
+// Строим индикаторы (точки)
+function buildDots() {
+  dotsContainer.innerHTML = "";
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement("button");
+    dot.className = "reviews-dot" + (i === 0 ? " is-active" : "");
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-selected", i === 0 ? "true" : "false");
+    dot.setAttribute("aria-label", `Перейти к отзыву ${i + 1}`);
+    dot.dataset.index = i;
+    dot.addEventListener("click", () => {
+      goToSlide(i);
+    });
+    dotsContainer.appendChild(dot);
+  }
+}
+
+// Переход к слайду
+function goToSlide(index) {
+  if (index < 0) index = totalSlides - 1;
+  if (index >= totalSlides) index = 0;
+  currentIndex = index;
+  const offset = -currentIndex * 100;
+  track.style.transform = `translateX(${offset}%)`;
+  // Обновляем активную точку
+  document.querySelectorAll(".reviews-dot").forEach((dot, i) => {
+    dot.classList.toggle("is-active", i === currentIndex);
+    dot.setAttribute("aria-selected", i === currentIndex ? "true" : "false");
+  });
+}
+
+// Переключение вперёд/назад
+function nextSlide() {
+  goToSlide(currentIndex + 1);
+}
+function prevSlide() {
+  goToSlide(currentIndex - 1);
+}
+
+// Автопрокрутка
+function startAutoplay() {
+  if (autoplayInterval) clearInterval(autoplayInterval);
+  autoplayInterval = setInterval(nextSlide, AUTOPLAY_DELAY);
+}
+function stopAutoplay() {
+  if (autoplayInterval) {
+    clearInterval(autoplayInterval);
+    autoplayInterval = null;
+  }
+}
+
+// Обработчики событий
+function initEvents() {
+  // Кнопки
+  nextBtn.addEventListener("click", () => {
+    stopAutoplay();
+    nextSlide();
+    startAutoplay();
+  });
+  prevBtn.addEventListener("click", () => {
+    stopAutoplay();
+    prevSlide();
+    startAutoplay();
+  });
+
+  // Клавиатура
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+      stopAutoplay();
+      nextSlide();
+      startAutoplay();
+    } else if (e.key === "ArrowLeft") {
+      stopAutoplay();
+      prevSlide();
+      startAutoplay();
+    }
+  });
+
+  // Свайп (touch)
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const slider = document.querySelector(".reviews-track-wrap");
+  slider.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true },
+  );
+  slider.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        // минимальное расстояние для свайпа
+        if (diff > 0) {
+          stopAutoplay();
+          nextSlide();
+          startAutoplay();
+        } else {
+          stopAutoplay();
+          prevSlide();
+          startAutoplay();
+        }
+      }
+    },
+    { passive: true },
+  );
+
+  // Пауза при наведении на слайдер
+  const sliderContainer = document.querySelector(".reviews-slider");
+  sliderContainer.addEventListener("mouseenter", stopAutoplay);
+  sliderContainer.addEventListener("mouseleave", startAutoplay);
+}
+
+// Инициализация
+function initReviews() {
+  buildSlides();
+  buildDots();
+  goToSlide(0);
+  initEvents();
+  startAutoplay();
+}
+
+// Запускаем, если есть контейнер
+if (document.getElementById("reviewsTrack")) {
+  initReviews();
+}

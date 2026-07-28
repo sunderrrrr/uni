@@ -53,12 +53,12 @@
         </nav>
         <div class="nav-cta">
           <a
-            href="#"
+            href="https://t.me/bkmz7692"
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-primary"
           >
-            Записаться на разбор
+            Получить разбор
           </a>
         </div>
       </div>
@@ -79,7 +79,7 @@
             </p>
             <div class="hero-ctas reveal">
               <a
-                href="#"
+                href="https://t.me/bkmz7692"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn btn-primary"
@@ -92,7 +92,7 @@
                 >Гарантия: вернём 50%, если не поступите</span
               >
               <span class="note hero-note">
-                никаких анкет, просто живой разговор
+                никаких анкет, просто живой разговор и личный подход
               </span>
             </div>
           </div>
@@ -428,6 +428,71 @@
         </div>
       </section>
 
+      <!-- ОТЗЫВЫ — СЛАЙДЕР -->
+      <section id="reviews" class="reviews">
+        <div class="wrap">
+          <div class="head-block">
+            <div class="eyebrow reveal">Отзывы</div>
+            <h2 class="reveal">Что говорят те, кто уже с нами</h2>
+          </div>
+          <div class="reviews-slider" role="region" aria-label="Отзывы">
+            <div class="reviews-track-wrap">
+              <div class="reviews-track" id="reviewsTrack">
+                <!-- слайды будут вставлены из JS -->
+              </div>
+            </div>
+
+            <!-- Навигация -->
+            <button
+              class="reviews-btn reviews-btn--prev"
+              type="button"
+              aria-label="Предыдущий отзыв"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              class="reviews-btn reviews-btn--next"
+              type="button"
+              aria-label="Следующий отзыв"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+
+            <!-- Индикаторы -->
+            <div
+              class="reviews-dots"
+              id="reviewsDots"
+              role="tablist"
+              aria-label="Навигация по отзывам"
+            >
+              <!-- точки вставятся из JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ПРИ ПОДДЕРЖКЕ REGIONAL SCHOOLTECH -->
       <section id="supported">
         <div class="wrap supported-grid">
@@ -455,7 +520,153 @@
           </div>
         </div>
       </section>
+      <!-- ФОРМАТЫ / ТАРИФЫ -->
+      <section id="products" class="products">
+        <div class="wrap">
+          <div class="head-block products-head">
+            <div class="eyebrow reveal">Путь к поступлению</div>
+            <h2 class="reveal">С чего начать?</h2>
+            <p class="products-sub reveal">
+              Мы — студенты и психолог. Мы сами прошли этот путь и знаем, как
+              сделать его проще. Первый шаг — бесплатный, а дальше — выбираешь
+              ты.
+            </p>
+          </div>
 
+          <div class="products-grid">
+            <!-- Карточка 1: Бесплатный разбор -->
+            <div class="product-card product-card--free reveal">
+              <div class="product-step">01</div>
+              <div class="product-icon" aria-hidden="true">
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="product-title">Бесплатный разбор</h3>
+              <p class="product-desc">
+                Ни к чему не обязывающий разговор. Расскажешь о своей ситуации —
+                мы честно скажем, чем можем помочь.
+              </p>
+              <ul class="product-benefits">
+                <li class="product-benefit">30–40 минут</li>
+                <li class="product-benefit">
+                  Рассказываешь о целях и сомнениях
+                </li>
+                <li class="product-benefit">
+                  Отвечаем на вопросы и предлагаем путь
+                </li>
+              </ul>
+              <div class="product-price product-price--free">Бесплатно</div>
+              <a
+                href="https://t.me/bkmz7692"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary product-cta"
+                >Записаться на бесплатный разбор</a
+              >
+            </div>
+
+            <!-- Карточка 2: Личная стратегия -->
+            <div class="product-card reveal">
+              <div class="product-step">02</div>
+              <div class="product-icon" aria-hidden="true">
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"
+                  />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg>
+              </div>
+              <h3 class="product-title">Личная стратегия поступления</h3>
+              <p class="product-desc">
+                Пошаговый план на весь год с честным расчётом шансов на бюджет.
+              </p>
+              <ul class="product-benefits">
+                <li class="product-benefit">Разбор твоих баллов и вариантов</li>
+                <li class="product-benefit">
+                  Список вузов и программ под тебя
+                </li>
+                <li class="product-benefit">План на год с дедлайнами</li>
+                <li class="product-benefit">
+                  PDF с расчётами специально для тебя
+                </li>
+              </ul>
+              <div class="product-price">4 000 ₽</div>
+              <a href="https://t.me/bkmz7692" class="btn btn-primary product-cta"
+                >Заказать стратегию</a
+              >
+            </div>
+
+            <!-- Карточка 3: Годовое сопровождение -->
+            <div class="product-card product-card--featured reveal">
+              <div class="product-step">03</div>
+              <div class="product-icon" aria-hidden="true">
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+              </div>
+              <h3 class="product-title">Сопровождение на весь год</h3>
+              <p class="product-desc">
+                От первого звонка до приказа о зачислении — мы рядом. Без «а что
+                если» в одиночку.
+              </p>
+              <ul class="product-benefits">
+                <li class="product-benefit">Ежемесячные созвоны</li>
+                <li class="product-benefit">
+                  Корректировка стратегии по ходу дела
+                </li>
+                <li class="product-benefit">Помощь с документами и подачей</li>
+                <li class="product-benefit">
+                  Приоритетный чат для срочных вопросов
+                </li>
+                <li class="product-benefit">Поддержка до самого зачисления</li>
+                <li class="product-benefit">
+                  <span class="product-benefit-accent">Доступ к психологу</span>
+                  для родителей
+                </li>
+              </ul>
+              <div class="product-price">от 5 000 ₽<span>/мес</span></div>
+              <a href="https://t.me/bkmz7692" class="btn btn-primary product-cta"
+                >Оставить заявку на сопровождение</a
+              >
+            </div>
+          </div>
+
+          
+      </section>
       <!-- FAQ -->
       <section id="faq">
         <div class="wrap">
@@ -573,11 +784,10 @@
         </div>
       </section>
 
-      <!-- ФИНАЛЬНЫЙ ПРИЗЫВ -->
       <section id="contact" class="section--dark final-cta">
         <div class="wrap">
           <div class="eyebrow reveal" style="justify-content: center">
-            Остались вопросы - напиши
+            Не знаешь, с чего начать?
           </div>
           <h2 class="reveal">Ты не один.</h2>
           <p class="reveal">
@@ -585,7 +795,7 @@
           </p>
           <div class="hero-ctas reveal" style="justify-content: center">
             <a
-              href="#"
+              href="https://t.me/bkmz7692"
               target="_blank"
               rel="noopener noreferrer"
               class="btn btn-primary"
@@ -603,7 +813,7 @@
       <div class="wrap footer-row">
         <a href="#top" class="logo">УНИФЛОУ</a>
         <div class="footer-links">
-          <a href="#" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://t.me/uniflou" target="_blank" rel="noopener">Telegram</a>
           <a href="#" target="_blank" rel="noopener">ВКонтакте</a>
           <a href="mailto:hello@uniflow.example">Email</a>
           <a href="#">Политика конфиденциальности</a>
